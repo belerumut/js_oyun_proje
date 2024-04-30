@@ -1,0 +1,10 @@
+/* 
+  bu css dosyasında oyun alanının tabanı, maksimum kaplayacağı alan olusturulmustur.
+  secilen resimler 100px*100px oldugu icin alana 4 resim yan yana 3 resim ise alt alta yerlesecektir.
+*/
+.oyunAlani {            
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 300px;
+  }
