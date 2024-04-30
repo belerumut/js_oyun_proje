@@ -55,7 +55,7 @@ resimlerin dizide arka arkaya iki kez bulunması oyunun amaci olan ayni resimler
   kartlarDizi.sort(() => 0.5 - Math.random())             //diziye yerlestirilen resimleri rastgele siralar
 
   const oyunAlani = document.querySelector('.oyunAlani')
-  const sonucDisplay = document.querySelector('#sonuc')
+  const sonucGoster = document.querySelector('#sonuc')
   let secilenKart = []
   let secilenKartId = []
   let bulunanKartlar = []
@@ -74,31 +74,31 @@ resimlerin dizide arka arkaya iki kez bulunması oyunun amaci olan ayni resimler
   //secilen kartlar arasinda eslesme olup olmadigini kontrol etmek icin gerekli kodlar
   function eslesmeKontrol() {
     const kartlar = document.querySelectorAll('img')
-    const ilkSecilienId = secilenKartId[0]
-    const ikinciSecilienId = secilenKartId[1]
+    const ilkSecilenId = secilenKartId[0]
+    const ikinciSecilenId = secilenKartId[1]
     
-    if(ilkSecilienId == ikinciSecilienId) {           //aynı karta iki kez arka arkaya tiklanma durumudur
-      kartlar[ilkSecilienId].setAttribute('src', 'resimler/kapak.png')
-      kartlar[ikinciSecilienId].setAttribute('src', 'resimler/kapak.png')
+    if(ilkSecilenId == ikinciSecilenId) {           //aynı karta iki kez arka arkaya tiklanma durumudur
+      kartlar[ilkSecilenId].setAttribute('src', 'resimler/kapak.png')
+      kartlar[ikinciSecilenId].setAttribute('src', 'resimler/kapak.png')
       alert('Aynı karta tıkladınız!!')
     }
     else if (secilenKart[0] === secilenKart[1]) {    //aynı karttan iki tane arka arkaya bulunma yani eşleşme durumudur
       alert('Tebrikler bir eslesme buldunuz!!')
-      kartlar[ilkSecilienId].setAttribute('src', 'resimler/beyaz.png')
-      kartlar[ikinciSecilienId].setAttribute('src', 'resimler/beyaz.png')
-      kartlar[ilkSecilienId].removeEventListener('click', kartiDondur)
-      kartlar[ikinciSecilienId].removeEventListener('click', kartiDondur)
+      kartlar[ilkSecilenId].setAttribute('src', 'resimler/beyaz.png')
+      kartlar[ikinciSecilenId].setAttribute('src', 'resimler/beyaz.png')
+      kartlar[ilkSecilenId].removeEventListener('click', kartiDondur)
+      kartlar[ikinciSecilenId].removeEventListener('click', kartiDondur)
       bulunanKartlar.push(secilenKart)
     } else {
-      kartlar[ilkSecilienId].setAttribute('src', 'resimler/kapak.png')    //son sonuç olan farkli resimleri bulma durumudur
-      kartlar[ikinciSecilienId].setAttribute('src', 'resimler/kapak.png')
+      kartlar[ilkSecilenId].setAttribute('src', 'resimler/kapak.png')    //son sonuç olan farkli resimleri bulma durumudur
+      kartlar[ikinciSecilenId].setAttribute('src', 'resimler/kapak.png')
       alert('Maalesef, iki resim ayni degil!')
     }
     secilenKart = []
     secilenKartId = []
-    sonucDisplay.textContent = bulunanKartlar.length
+    sonucGoster.textContent = bulunanKartlar.length
     if  (bulunanKartlar.length === kartlarDizi.length/2) {                //oyunun bitme koşulu olan tüm resimlerin bulunma durumu
-      sonucDisplay.textContent = 'Tebrikler! Bütün kartları buldunuz!!'
+      sonucGoster.textContent = 'Tebrikler! Bütün kartları buldunuz!!'
     }
   }
 
